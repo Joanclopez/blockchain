@@ -38,3 +38,9 @@ From the terminal in Visual Studio Code (or from the command line - as long as y
 ## for the moment ##
 
 you need git, nodejs and vs code installed.
+
+## Validation Steps ##
+
+How to tell you have git installed:
+
+```$git version```
