@@ -34,3 +34,7 @@ Inside that college folder, run:
 From the terminal in Visual Studio Code (or from the command line - as long as you are in the folder), run the following command:
 
 ```git pull origin main```
+
+## for the moment ##
+
+you need git, nodejs and vs code installed.
