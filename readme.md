@@ -45,6 +45,10 @@ How to tell you have git installed:
 
 ```$git version```
 
+How to tell you have node installed:
+
+```$node -v```
+
 ## Using your own repo ##
 
 First, create a repo in github.
@@ -60,5 +64,6 @@ then run the following commands:
 ```$git commit -m "<your commit message>"```
 
 ```$git push origin main```
+
 
 
