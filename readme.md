@@ -70,3 +70,12 @@ then run the following commands:
 To execute a javascript file using node.js, run the following command:
 
 ```$node <file name>```
+
+
+## Dependencies and NPM ##
+
+We want to use large chunks of code that others have written to interact with Ethereum, like the web3 package.  Do this, we need to set up the Node Package Manager (npm).
+
+From inside your folder, to create your own package.json:
+
+```$npm init```
