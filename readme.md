@@ -44,3 +44,21 @@ you need git, nodejs and vs code installed.
 How to tell you have git installed:
 
 ```$git version```
+
+## Using your own repo ##
+
+First, create a repo in github.
+
+git clone into a folder
+
+make your changes
+
+then run the following commands:
+
+```$git add <your updated files>```
+
+```$git commit -m "<your commit message>"```
+
+```$git push origin main```
+
+
