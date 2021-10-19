@@ -11,3 +11,8 @@ Inside that college folder, run:
 
 ```git clone https://github.com/eoinco/nci_2021.git```
 
+## Updating Code in Repo from Github ##
+
+From the terminal in Visual Studio Code (or from the command line - as long as you are in the folder), run the following command:
+
+```git pull origin main```
