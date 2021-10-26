@@ -307,9 +307,9 @@ const getSymbol = async() => {
 const returnAllValues = async() => {
     console.log(await getTotalSupply());
     console.log(await getSymbol());
-    console.log(await getBalanceOfOwner(owner));
-    console.log(await getDecimals());
     console.log(await getName());
+    console.log(await getDecimals());
+    console.log(await getBalanceOfOwner(owner));
 }
 
 returnAllValues();
