@@ -6,7 +6,7 @@ const Web3 = require("web3")
 
 // instantiate web3
 
-const rpcURL = "https://ropsten.infura.io/v3/";
+const rpcURL = "https://ropsten.infura.io/v3/a01337991aa746fca93b4e9c40c21ebd";
 const web3 = new Web3(rpcURL);
 console.log("connected to web3");
 
@@ -284,8 +284,14 @@ const getTotalSupply = async() => {
     return "total supply is: " + totSupply;
 }
 
+const getSymbol = async() => {
+    let symbol = await contract.methods.symbol().call();
+    return "symbol is: " + symbol;
+}
+
 const returnAllValues = async() => {
     console.log(await getTotalSupply());
+    console.log(await getSymbol());
 }
 
 returnAllValues();
