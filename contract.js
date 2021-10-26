@@ -271,7 +271,7 @@ const abi = [
 // connect to our contract on ropsten
 
 // get our contract address
-const address = "0x952e661c1b6beb85475fb61c5b9fc3e22c2c5d2d";
+const address = "0x4c0c9e72887d48e88e9e6e71578ac11831164141";
 const owner = "0xFbC8857d46223C39C48BA844c5AB0159EA3B8692";
 
 const contract = new web3.eth.Contract(abi, address);
@@ -284,6 +284,16 @@ const getTotalSupply = async() => {
     return "total supply is: " + totSupply;
 }
 
+const getBalanceOfOwner = async(owner) => {
+    let bal = await contract.methods.balanceOf(owner).call();
+    return "balance of owner: " + bal;
+}
+
+const getDecimals = async() => {
+    let decimals = await contract.methods.decimals().call();
+    return "no. of decimal places is: " + decimals;
+}
+
 const getSymbol = async() => {
     let symbol = await contract.methods.symbol().call();
     return "symbol is: " + symbol;
@@ -292,9 +302,12 @@ const getSymbol = async() => {
 const returnAllValues = async() => {
     console.log(await getTotalSupply());
     console.log(await getSymbol());
+    console.log(await getBalanceOfOwner(owner));
+    console.log(await getDecimals());
 }
 
 returnAllValues();
 //console.log("hello world?");
+
 
 
