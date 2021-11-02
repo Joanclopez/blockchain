@@ -1,17 +1,18 @@
 // this is a basic readonly contract interaction file
+
+// this loads the web3 dependency
 const Web3 = require("web3")
 
 
-// today's lab
-
-// instantiate web3
-
+// set up a RPC (remote procedure call) to connect to an ethereum node
 const rpcURL = "https://ropsten.infura.io/v3/a01337991aa746fca93b4e9c40c21ebd";
+
+// instantiate web3 with this URL
 const web3 = new Web3(rpcURL);
+
 console.log("connected to web3");
 
 // get the ABI (interface) for our contract
-
 const abi = [
 	{
 		"inputs": [],
@@ -268,13 +269,15 @@ const abi = [
 	}
 ]
 
-// connect to our contract on ropsten
-
-// get our contract address
+// specify our contract address 
 const address = "0xe3872f64d88d29e89ae2e522cefae0c39369454f";
+
+// specify our owner address
 const owner = "0xFbC8857d46223C39C48BA844c5AB0159EA3B8692";
 
+// instantiate a contract object
 const contract = new web3.eth.Contract(abi, address);
+
 console.log("connected to contract on ropsten");
 
 // run some of the methods in our contract (using javascript)
