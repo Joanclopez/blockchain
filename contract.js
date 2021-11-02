@@ -3,9 +3,14 @@
 // this loads the web3 dependency
 const Web3 = require("web3")
 
+// this sets up my .env file
+require('dotenv').config()
+
+// let's load our environment variables
+infuraToken = process.env.INFURA_TOKEN
 
 // set up a RPC (remote procedure call) to connect to an ethereum node
-const rpcURL = "https://ropsten.infura.io/v3/a01337991aa746fca93b4e9c40c21ebd";
+const rpcURL = "https://ropsten.infura.io/v3/" + infuraToken;
 
 // instantiate web3 with this URL
 const web3 = new Web3(rpcURL);
