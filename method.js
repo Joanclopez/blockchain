@@ -326,4 +326,4 @@ const transferToken = async(toAccount, amount) => {
 
 // broadcast the transaction
 
-transferToken("0xE7A0bA0c657aaDfa6330C70d870B0D9FCF97d447", 500)
+transferToken("0xE7A0bA0c657aaDfa6330C70d870B0D9FCF97d447", 123)
