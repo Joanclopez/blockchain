@@ -18,6 +18,7 @@
   "homepage": "https://github.com/eoinco/nci_2021#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
+    "ethereumjs-tx": "^2.1.2",
     "web3": "^1.6.0"
   }
 }
