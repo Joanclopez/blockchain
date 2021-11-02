@@ -271,10 +271,7 @@ const abi = [
 // instantiate web3 with the infura rpc url
 const web3 = new Web3("https://ropsten.infura.io/v3/" + infuraToken);
 
-// specify our contract address 
 const address = contractAddress;
-
-// specify our owner address
 const owner = ownerAddress;
 
 
@@ -289,7 +286,6 @@ const sendTx = async(raw) => {
 const transferToken = async(toAccount, amount) => {
 
     // generate a nonce
-
     let txCount = await web3.eth.getTransactionCount(owner);
     console.log("tx count is " + txCount);
 
@@ -302,9 +298,10 @@ const transferToken = async(toAccount, amount) => {
         data: contract.methods.transfer(toAccount, amount).encodeABI()
     }
 
+    // assign a chain id (ropsten: 3)
     const tx = new Tx(txObject, {chain: 'ropsten', hardfork: 'petersburg'})
 
-    // sign the tx
+    // sign the tx - THIS USES THE SECRET PRIVATE KEY
     tx.sign(privateKey);
 
     console.log("signed transaction with super secret private key");
@@ -314,16 +311,12 @@ const transferToken = async(toAccount, amount) => {
     const raw = '0x' + serializedTx.toString('hex');
 
     console.log('about to send transaction' + raw)
-    let txHash = await sendTx(raw);
-    console.log("transaction hash: " + txHash.transactionHash)
-    console.log("transaction in block: " + txHash.blockNumber)
+
+    // broadcast the transaction
+    let txResponse = await sendTx(raw);
+    console.log("transaction hash: " + txResponse.transactionHash)
+    console.log("transaction in block: " + txResponse.blockNumber)
 }
 
 
-// create a transaction to execute a method (transfer) on the contract
-
-// sign the transaction with our private key
-
-// broadcast the transaction
-
-transferToken("0xFbC8857d46223C39C48BA844c5AB0159EA3B8692", 123)
+transferToken("0xFbC8857d46223C39C48BA844c5AB0159EA3B8692", 123000000)
