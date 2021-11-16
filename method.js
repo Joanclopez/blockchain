@@ -317,4 +317,5 @@ const transferToken = async(toAccount, amount) => {
     console.log("transaction in block: " + txResponse.blockNumber)
 }
 
-transferToken("0xFbC8857d46223C39C48BA844c5AB0159EA3B8692", 123000000)
+module.exports = { transferToken }
+//transferToken("0xFbC8857d46223C39C48BA844c5AB0159EA3B8692", 123000000)
