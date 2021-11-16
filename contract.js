@@ -279,13 +279,14 @@ const abi = [
 // specify our contract address 
 const address = contractAddress;
 
-// specify our owner address
-const owner = ownerAddress;
-
 // instantiate a contract object
 const contract = new web3.eth.Contract(abi, address);
 
 console.log("connected to contract on ropsten");
+
+
+// specify our owner address
+const owner = ownerAddress;
 
 // run some of the methods in our contract (using javascript)
 
@@ -322,8 +323,10 @@ const returnAllValues = async() => {
     console.log(await getBalanceOfOwner(owner));
 }
 
-returnAllValues();
+//returnAllValues();
 //console.log("hello world?");
+
+module.exports = { getSymbol, getDecimals, getBalanceOfOwner, getName }
 
 
 
