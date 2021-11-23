@@ -30,22 +30,31 @@ const distribute = async() => {
 
     console.log(`distro addresses are: ${ distributionAddresses}`);
 
-
     // get the balance of the token owner
     let ownerBalance = await contract.getBalanceOfAccount(ownerAddress);
     let ob = new BigNumber(ownerBalance);
     console.log(`owner balance is ${ob}`);
 
+
+    // get the symbol of the token
+    let tokenSymbol = await contract.getSymbol();
+    console.log(`symbol is ${tokenSymbol}`);
+
     // get five percent of this balance
     let fivePerCent = ob.div(20);
     console.log(`five per cent of owner balance is ${fivePerCent}`);
 
-
     // work out how many addresses in file (N)
     let numberOfAddresses = distributionAddresses.length;
     console.log(`number of addresses in file is ${numberOfAddresses}`);
-    
+
     // divide the 5% by N to get distroAmount
+    let distributionAmount = fivePerCent.div(numberOfAddresses)
+    console.log(`distribution amount per address is ${distributionAmount}`);
+
+    for (looper = 0; looper < numberOfAddresses; looper++) {
+        console.log(`about to distribute ${distributionAmount} ${tokenSymbol} to ${distributionAddresses[looper]}`)
+    }
     // loop through N accounts/addresses
     // for each account, do a transfer of distroAmount
 
