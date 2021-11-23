@@ -40,6 +40,17 @@ const distribute = async() => {
     let fivePerCent = ob.div(20);
     console.log(`five per cent of owner balance is ${fivePerCent}`);
 
+
+    // work out how many addresses in file (N)
+    let numberOfAddresses = distributionAddresses.length;
+    console.log(`number of addresses in file is ${numberOfAddresses}`);
+    
+    // divide the 5% by N to get distroAmount
+    // loop through N accounts/addresses
+    // for each account, do a transfer of distroAmount
+
+
+
     // let bal = new BigNumber(1000000000000000000000000000000) // this should be owner balance from smart contract
     // let fivePerCent = bal.div(20)
     // // then we need to divide fivePerCent by the number of addresses in the file
