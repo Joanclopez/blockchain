@@ -86,5 +86,3 @@ From inside your folder, to create your own package.json:
 To POST to a route, execute the following CURL command:
 
 ```curl -XPOST http://localhost:8080/transfer -H 'content-type: application/json' -d '{"account_to": "0x4d60E7f9d4901816981a0E4c6D95F394159C6371", "amount": "123000"}'```
-
-(guthub test)
