@@ -1,17 +1,19 @@
 // create a method that will be called by the web server
 
 // in this method:
-// - read the accounts.txt file
-// put the N accounts into an array
+// - read the accounts.txt file DONE
+// put the N accounts into an array DONE
 // get the totalsupply remaining for the token owner
 // calculate 5% of that totalSupply
 // loop N times, and execute N transactions transferring the token from owner to address in array
 // collect tea and medals
 
 let fs = require("fs");
+
 let BigNumber = require("big-number")
 
 let method = require('./method.js');
+let contract = require('./contract.js');
 
 // this sets up my .env file
 require('dotenv').config()
@@ -25,13 +27,24 @@ privateKey = Buffer.from(process.env.SUPER_SECRET_PRIVATE_KEY, 'hex')
 const distribute = async() => {
     // read in the file
     let distributionAddresses = fs.readFileSync('./accounts.txt', 'utf8').split('\n');
+
     console.log(`distro addresses are: ${ distributionAddresses}`);
 
-    let bal = new BigNumber(1000000000000000000000000000000) // this should be owner balance from smart contract
-    let fivePerCent = bal.div(20)
-    // then we need to divide fivePerCent by the number of addresses in the file
-    let accounts = distributionAddresses.length
-    console.log(` we have ${accounts} accounts in our file`) 
+
+    // get the balance of the token owner
+    let ownerBalance = await contract.getBalanceOfOwner(ownerAddress);
+    let ob = new BigNumber(ownerBalance);
+    console.log(`owner balance is ${ob}`);
+
+    // get five percent of this balance
+    let fivePerCent = ob.div(20);
+    console.log(`five per cent of owner balance is ${fivePerCent}`);
+
+    // let bal = new BigNumber(1000000000000000000000000000000) // this should be owner balance from smart contract
+    // let fivePerCent = bal.div(20)
+    // // then we need to divide fivePerCent by the number of addresses in the file
+    // let accounts = distributionAddresses.length
+    // console.log(` we have ${accounts} accounts in our file`) 
 
 }
 

@@ -302,7 +302,7 @@ const getName = async() => {
 
 const getBalanceOfOwner = async(owner) => {
     let bal = await contract.methods.balanceOf(owner).call();
-    return "balance of owner: " + bal;
+    return bal;
 }
 
 const getDecimals = async() => {
