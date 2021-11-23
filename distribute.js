@@ -3,9 +3,9 @@
 // in this method:
 // - read the accounts.txt file
 // put the N accounts into an array
-// get the totalsupply for the token owner
+// get the totalsupply remaining for the token owner
 // calculate 5% of that totalSupply
-// loop N times, and execute N transactions transferring the token
+// loop N times, and execute N transactions transferring the token from owner to address in array
 // collect tea and medals
 
 let fs = require("fs");
@@ -35,4 +35,5 @@ const distribute = async() => {
 
 }
 
-module.exports = { distribute }
+distribute()
+//module.exports = { distribute }
