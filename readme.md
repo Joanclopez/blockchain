@@ -113,3 +113,12 @@ To POST to a route, execute the following CURL command:
 
 ### view logs inside a container ###
 ```docker logs -f [name]```
+
+### view images on your computer ###
+```docker image ls```
+
+### clear the docker system ###
+```docker system prune```
+
+### remove all docker images ###
+```docker image prune -a -f```
