@@ -118,7 +118,7 @@ To POST to a route, execute the following CURL command:
 ```docker image ls```
 
 ### clear the docker system ###
-```docker system prune```
+```docker system prune -f```
 
 ### remove all docker images ###
 ```docker image prune -a -f```
