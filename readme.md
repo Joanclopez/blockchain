@@ -122,3 +122,16 @@ To POST to a route, execute the following CURL command:
 
 ### remove all docker images ###
 ```docker image prune -a -f```
+
+## Requirements for Assignment ##
+
+### 1. create an ethereum account ###
+This is completed inside metamask (12 words, create an account, fund with Ropsten ether)
+
+### 2. Create an ERC20-compliant, fixed-supply token
+using open zeppelin contract, 
+
+### 3. Deply to Ropsten
+deploying using injected web3 and metamask
+
+
