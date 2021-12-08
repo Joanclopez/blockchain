@@ -12,6 +12,8 @@ const getWalletDetails = async() => {
     const wallet = Wallet.generate();
     console.log("generated wallet...");
     console.log("wallet public key: " + wallet.getPublicKeyString())
+
+    console.log("wallet private key: " + wallet.getPrivateKeyString())
 }
 
 getWalletDetails();
