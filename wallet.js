@@ -24,7 +24,7 @@ const getWalletDetails = async() => {
     console.log(`eth address is 0x${ethAddress}`);
 }
 
-//getWalletDetails();
+getWalletDetails();
 
 const bip39 = require('bip39');
 const { hdkey } = require('ethereumjs-wallet');
@@ -35,7 +35,11 @@ const { hdkey } = require('ethereumjs-wallet');
 
 const getHDWalletDetails = async() => {
     console.log("getting hd wallet details...")
+
+    const mnemonic = "secrit seed phrase goes here"
+
+    let seed = await bip39.mnemonicToSeed(mnemonic);
 }
 
-getHDWalletDetails()
+//getHDWalletDetails()
 
