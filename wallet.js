@@ -24,4 +24,18 @@ const getWalletDetails = async() => {
     console.log(`eth address is 0x${ethAddress}`);
 }
 
-getWalletDetails();
+//getWalletDetails();
+
+const bip39 = require('bip39');
+const { hdkey } = require('ethereumjs-wallet');
+
+// takes a seed phrase (mnemonic)
+// converts the seed phrase into entropy
+// takes in a 'path' to create a deterministic account
+
+const getHDWalletDetails = async() => {
+    console.log("getting hd wallet details...")
+}
+
+getHDWalletDetails()
+
