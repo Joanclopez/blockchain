@@ -8,12 +8,20 @@ const keccak256 = require("keccak256");
 
 
 const getWalletDetails = async() => {
-    // - generate public/private SECP256k1 keypair
+    // generate public/private SECP256k1 keypair
     const wallet = Wallet.generate();
     console.log("generated keypair...");
 
     console.log("wallet public key: " + wallet.getPublicKeyString())
-    console.log("wallet private key: " + wallet.getPrivateKeyString())
+
+    // hash the public key (keccak256)
+    const pubKey = wallet.getPublicKey();
+    const hashedPublicKey = keccak256(pubKey).toString('hex');
+    console.log(`hashed public key: 0x${hashedPublicKey}`);
+
+    // - drop the first 12 bytes
+    var ethAddress = hashedPublicKey.substring(24);
+    console.log(`eth address is 0x${ethAddress}`);
 }
 
 getWalletDetails();
