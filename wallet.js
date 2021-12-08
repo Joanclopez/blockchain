@@ -37,7 +37,10 @@ const getHDWalletDetails = async() => {
     console.log("getting hd wallet details...")
 
     // takes a seed phrase (mnemonic)
-    const mnemonic = "secrit seed phrase goes here";
+    const mnemonic = "supar secrit seed phrase";
+
+    // 12 words from a selection of 2000 words
+    // 72,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
 
     // converts the seed phrase into entropy
     let seed = await bip39.mnemonicToSeed(mnemonic);
@@ -47,7 +50,6 @@ const getHDWalletDetails = async() => {
     // takes in a 'path' to create a deterministic account
     const path = "m/44'/60'/0'/0/0";
     const wallet = hdwallet.derivePath(path).getWallet();
-    console.log(`wallet is ${wallet}`);
 
     console.log("wallet public key: " + wallet.getPublicKeyString())
 
@@ -59,7 +61,10 @@ const getHDWalletDetails = async() => {
     // - drop the first 12 bytes
     var ethAddress = hashedPublicKey.substring(24);
     console.log(`eth address is 0x${ethAddress}`);
+
+    // this should be your metamask account 1 (if you have used your seed phrase)
 }
+
 
 getHDWalletDetails()
 
