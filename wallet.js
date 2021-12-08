@@ -8,11 +8,11 @@ const keccak256 = require("keccak256");
 
 
 const getWalletDetails = async() => {
-    console.log("getting details...");
+    // - generate public/private SECP256k1 keypair
     const wallet = Wallet.generate();
-    console.log("generated wallet...");
-    console.log("wallet public key: " + wallet.getPublicKeyString())
+    console.log("generated keypair...");
 
+    console.log("wallet public key: " + wallet.getPublicKeyString())
     console.log("wallet private key: " + wallet.getPrivateKeyString())
 }
 
