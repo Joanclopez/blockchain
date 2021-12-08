@@ -123,6 +123,14 @@ To POST to a route, execute the following CURL command:
 ### remove all docker images ###
 ```docker image prune -a -f```
 
+### run docker-compose ###
+```docker-compose up```
+
+to run it in detached mode:
+
+```docker-compose up -d```
+
+
 ## Requirements for Assignment ##
 
 ### 1. create an ethereum account ###
