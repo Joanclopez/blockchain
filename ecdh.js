@@ -42,15 +42,15 @@ var sodium = require("sodium-native");
 
 // 1. Make an x25519 keypair for Alice
 
-
 // step 1 allocate memory
 var aliceX25519PubKey = sodium.sodium_malloc(sodium.crypto_box_PUBLICKEYBYTES);
 var aliceX25519PrivKey = sodium.sodium_malloc(sodium.crypto_box_SECRETKEYBYTES);
 
+// create the keypair
 sodium.crypto_box_keypair(aliceX25519PubKey, aliceX25519PrivKey);
 
+// log the output (backdoor)
 console.log("Alice keypair created.");
-
 console.log(`Public ${sodium.crypto_box_PUBLICKEYBYTES}-byte key created for Alice: 0x${aliceX25519PubKey.toString('hex')}`);
 console.log(`Secret ${sodium.crypto_box_SECRETKEYBYTES}-byte key created for Alice: 0x${aliceX25519PrivKey.toString('hex')}`);
 
