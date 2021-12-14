@@ -46,7 +46,11 @@ sodium.crypto_hash_sha256(messageHash, messageBuffer)
 
 console.log(`message hash is: 0x${messageHash.toString('hex')}`)
 
-
+// sign the message hash
 var aliceSignature = sodium.sodium_malloc(sodium.crypto_sign_BYTES);
 
 console.log(`alice's signature will be ${sodium.crypto_sign_BYTES}-bytes long`)
+
+sodium.crypto_sign_detached(aliceSignature, messageHash, alicePrivateSigningKey)
+
+console.log(`signature is: 0x${aliceSignature.toString('hex')}`);
