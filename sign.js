@@ -54,3 +54,9 @@ console.log(`alice's signature will be ${sodium.crypto_sign_BYTES}-bytes long`)
 sodium.crypto_sign_detached(aliceSignature, messageHash, alicePrivateSigningKey)
 
 console.log(`signature is: 0x${aliceSignature.toString('hex')}`);
+
+// verify the signature
+
+var bool = sodium.crypto_sign_verify_detached(aliceSignature, messageHash, alicePublicSigningKey)
+
+console.log(`signature verified: ${bool}`);
