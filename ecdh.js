@@ -65,5 +65,17 @@ console.log("Bob keypair created.");
 console.log(`Public ${sodium.crypto_box_PUBLICKEYBYTES}-byte key created for Bob: 0x${bobX25519PubKey.toString('hex')}`);
 console.log(`Secret ${sodium.crypto_box_SECRETKEYBYTES}-byte key created for Bob: 0x${bobX25519PrivKey.toString('hex')}`);
 
+// 3. Alice creates a shared secret with Bob's x25519 public key
+
+var aliceSharedSecret = sodium.sodium_malloc(sodium.crypto_scalarmult_BYTES);
+
+// wipe the memory location of the secret (overwrite with zeros)
+sodium.sodium_memzero(aliceSharedSecret);
+
+console.log(`Secret will be ${sodium.crypto_scalarmult_BYTES}-bytes long`);
+console.log(`memory contains: ${aliceSharedSecret.toString('hex')}`);
+
+
+
 
 
