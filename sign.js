@@ -56,7 +56,10 @@ sodium.crypto_sign_detached(aliceSignature, messageHash, alicePrivateSigningKey)
 console.log(`signature is: 0x${aliceSignature.toString('hex')}`);
 
 // verify the signature
+var verifyMessage = "Alice is not Satoshi Nakamoto, for sure and for real";
+var verifyMessageHash = sodium.sodium_malloc(sodium.crypto_hash_sha256_BYTES);
+sodium.crypto_hash_sha256(verifyMessageHash, Buffer.from(verifyMessage));
 
-var bool = sodium.crypto_sign_verify_detached(aliceSignature, messageHash, alicePublicSigningKey)
+var bool = sodium.crypto_sign_verify_detached(aliceSignature, verifyMessageHash, alicePublicSigningKey)
 
 console.log(`signature verified: ${bool}`);
