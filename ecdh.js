@@ -38,6 +38,21 @@ var sodium = require("sodium-native");
 
 // (G * PrivKeyAlice * PrivKeyBob) = (G * PrivKeyBob * PrivKeyAlice)
 
+// An Attacker, Charlie, will not generate the same secret S
+
+// 1. Make an x25519 keypair for Alice
+
+
+// step 1 allocate memory
+var aliceX25519PubKey = sodium.sodium_malloc(sodium.crypto_box_PUBLICKEYBYTES);
+var aliceX25519PrivKey = sodium.sodium_malloc(sodium.crypto_box_SECRETKEYBYTES);
+
+sodium.crypto_box_keypair(aliceX25519PubKey, aliceX25519PrivKey);
+
+console.log("Alice keypair created.");
+
+console.log(`Public ${sodium.crypto_box_PUBLICKEYBYTES}-byte key created for Alice: 0x${aliceX25519PubKey.toString('hex')}`);
+console.log(`Secret ${sodium.crypto_box_SECRETKEYBYTES}-byte key created for Alice: 0x${aliceX25519PrivKey.toString('hex')}`);
 
 
 
