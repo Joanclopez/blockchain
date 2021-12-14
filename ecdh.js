@@ -41,7 +41,6 @@ var sodium = require("sodium-native");
 // An Attacker, Charlie, will not generate the same secret S
 
 // 1. Make an x25519 keypair for Alice
-
 // step 1 allocate memory
 var aliceX25519PubKey = sodium.sodium_malloc(sodium.crypto_box_PUBLICKEYBYTES);
 var aliceX25519PrivKey = sodium.sodium_malloc(sodium.crypto_box_SECRETKEYBYTES);
@@ -49,11 +48,22 @@ var aliceX25519PrivKey = sodium.sodium_malloc(sodium.crypto_box_SECRETKEYBYTES);
 // create the keypair
 sodium.crypto_box_keypair(aliceX25519PubKey, aliceX25519PrivKey);
 
-// log the output (backdoor)
+// log the alice key output (backdoor)
 console.log("Alice keypair created.");
 console.log(`Public ${sodium.crypto_box_PUBLICKEYBYTES}-byte key created for Alice: 0x${aliceX25519PubKey.toString('hex')}`);
 console.log(`Secret ${sodium.crypto_box_SECRETKEYBYTES}-byte key created for Alice: 0x${aliceX25519PrivKey.toString('hex')}`);
 
+// 2. Make an x25519 keypair for Bob
+var bobX25519PubKey = sodium.sodium_malloc(sodium.crypto_box_PUBLICKEYBYTES);
+var bobX25519PrivKey = sodium.sodium_malloc(sodium.crypto_box_SECRETKEYBYTES);
+
+// create the keypair
+sodium.crypto_box_keypair(bobX25519PubKey, bobX25519PrivKey);
+
+// log the bob key output (backdoor)
+console.log("Bob keypair created.");
+console.log(`Public ${sodium.crypto_box_PUBLICKEYBYTES}-byte key created for Bob: 0x${bobX25519PubKey.toString('hex')}`);
+console.log(`Secret ${sodium.crypto_box_SECRETKEYBYTES}-byte key created for Bob: 0x${bobX25519PrivKey.toString('hex')}`);
 
 
 
