@@ -67,21 +67,16 @@ console.log(`Secret ${sodium.crypto_box_SECRETKEYBYTES}-byte key created for Bob
 
 // 3. Alice creates a shared secret with Bob's x25519 public key
 
+// allocate the memory for the secret
 var aliceSharedSecret = sodium.sodium_malloc(sodium.crypto_scalarmult_BYTES);
 
 // wipe the memory location of the secret (overwrite with zeros)
 sodium.sodium_memzero(aliceSharedSecret);
 
+// log expected size of secret
 console.log(`Secret will be ${sodium.crypto_scalarmult_BYTES}-bytes long`);
-//console.log(`memory contains: ${aliceSharedSecret.toString('hex')}`);
 
 // (PubKeyBob * PrivKeyAlice) = (G * PrivKeyBob * PrivKeyAlice) = S
-// secret should be crypto_scalarmult_BYTES
-console.log(`secret should be ${sodium.crypto_scalarmult_BYTES}-bytes`)
-// secret key should be crypto_scalarmult_SCALARBYTES
-console.log(`secret key should be ${sodium.crypto_scalarmult_SCALARBYTES}-bytes`)
-// public key should be crypto_scalarmult_BYTES
-console.log(`public key should be ${sodium.crypto_scalarmult_BYTES}-bytes`)
 
 // ALICE generating secret (bob pubkey, alice priv key)
 sodium.crypto_scalarmult(aliceSharedSecret, aliceX25519PrivKey, bobX25519PubKey);
