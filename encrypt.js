@@ -24,26 +24,19 @@ console.log(`nonce buffer is: ${nonceBuffer.toString('hex')}`)
 var encryptionKey = Buffer.from('a56fe0c29f4c3bf7c29d31ad817ba7f7b519bad990ea34aa32aeba2e17145b77', 'hex')
 sodium.crypto_stream_chacha20_xor(ciphertext, Buffer.from(message), nonceBuffer, encryptionKey)
 
-console.log(`cipher text: ${ciphertext.toString('hex')}`);
-console.log(`message: ${message}`)
-console.log(`nonce buffer: ${nonceBuffer.toString('hex')}`);
-console.log(`encryption key: ${encryptionKey.toString('hex')}`);
-console.log('------------')
-
-// console.log(`cipher text: ${ciphertext.toString('hex')}`);
-// console.log(`cipher text length: ${ciphertext.length}-bytes`)
+console.log(`encrypted '${message}' to ${ciphertext.toString('hex')}`);
+console.log(`using encryption key ${encryptionKey.toString('hex')} and nonce ${nonceBuffer.toString('hex')}`);
 
 var decryptedMessage = sodium.sodium_malloc(ciphertext.length);
 
-console.log(`cipher text: ${ciphertext.toString('hex')}`);
+sodium.crypto_stream_chacha20_xor(decryptedMessage, ciphertext, nonceBuffer, encryptionKey);
+console.log(`decrypted '${decryptedMessage}' from ${ciphertext.toString('hex')}`);
+console.log(`using encryption key ${encryptionKey.toString('hex')} and nonce ${nonceBuffer.toString('hex')}`);
 
-sodium.crypto_stream_chacha20_xor(decryptedMessage,ciphertext,  nonceBuffer, encryptionKey);
+// VERY IMPORTANT NOTE: If you use the same nonce for a different message, you will expose your encryption key!!
+// nonces are numbers that are used only ONCE!!
+// random nonces can be used (they are usually included with the ciphertext)
+// but then the size of the random nonce determines how many messages you can send safely with the same key
 
-console.log(`cyphertext length ${ciphertext.length}`)
-console.log(`cipher text: ${ciphertext.toString('hex')}`);
-console.log(`nonce buffer: ${nonceBuffer.toString('hex')}`);
-console.log(`encryption key: ${encryptionKey.toString('hex')}`);
-
-console.log(`decrypted message is: ${decryptedMessage.toString()}`);
 
 
