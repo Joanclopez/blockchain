@@ -80,7 +80,23 @@ console.log(`Secret will be ${sodium.crypto_scalarmult_BYTES}-bytes long`);
 
 // ALICE generating secret (bob pubkey, alice priv key)
 sodium.crypto_scalarmult(aliceSharedSecret, aliceX25519PrivKey, bobX25519PubKey);
-console.log(`ecdh-generated secret is: 0x${aliceSharedSecret.toString('hex')}`);
+console.log(`ALICE: ecdh-generated secret is: 0x${aliceSharedSecret.toString('hex')}`);
+
+// 4. Bob creates a shared secret with Alice's x25519 public key
+
+var bobSharedSecret = sodium.sodium_malloc(sodium.crypto_scalarmult_BYTES);
+sodium.sodium_memzero(bobSharedSecret);
+
+// (PubKeyAlice * PrivKeyBob) = (G * PrivKeyAlice * PrivKeyBob) = S
+
+// BOB generating secret (alice pubkey, bob priv key)
+
+sodium.crypto_scalarmult(bobSharedSecret, bobX25519PrivKey, aliceX25519PubKey);
+console.log(`BOB: ecdh-generated secret is: 0x${bobSharedSecret.toString('hex')}`);
+
+
+
+
 
 
 
