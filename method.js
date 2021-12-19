@@ -9,7 +9,7 @@ require('dotenv').config()
 infuraToken = process.env.INFURA_TOKEN
 contractAddress = process.env.CONTRACT_ADDRESS
 ownerAddress = process.env.OWNER_ADDRESS
-privateKey = Buffer.from(process.env.SUPER_SECRET_PRIVATE_KEY, 'hex')
+privateKey = Buffer.from(process.env.PRIVATE_KEY, 'hex')
 
 // get the ABI (interface) for our contract
 const abi = [

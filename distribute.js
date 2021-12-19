@@ -22,7 +22,7 @@ require('dotenv').config()
 infuraToken = process.env.INFURA_TOKEN
 contractAddress = process.env.CONTRACT_ADDRESS
 ownerAddress = process.env.OWNER_ADDRESS
-privateKey = Buffer.from(process.env.SUPER_SECRET_PRIVATE_KEY, 'hex')
+privateKey = Buffer.from(process.env.PRIVATE_KEY, 'hex')
 
 const distribute = async() => {
     // read in the file
@@ -53,6 +53,7 @@ const distribute = async() => {
     console.log(`distribution amount per address is ${distributionAmount}`);
 
     for (looper = 0; looper < numberOfAddresses; looper++) {
+        distributionAddresses[looper] = distributionAddresses[looper].replace(/(\r\n|\n|\r)/gm, "")
         console.log(`about to distribute ${tokenSymbol}, ${distributionAmount} tokens go to ${distributionAddresses[looper]}`)
         // execute a ERC20transfer(ownerAddress, distributionAddresss[looper], distributionAmount);
         let retval = await method.transferToken(distributionAddresses[looper], distributionAmount)
