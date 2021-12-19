@@ -1,0 +1,18 @@
+---
+
+version: '3.7'
+services:
+  nci2021:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 8090:8080
+    networks:
+      - labnetwork
+networks:
+  labnetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.60.0.0/24
